@@ -1,0 +1,37 @@
+
+.signup{
+    margin-bottom:3rem;
+    
+}
+
+.form__container{
+    display: flex;
+    flex-direction: column;
+}
+
+.input{
+    border:1px solid rgb(134, 176, 239);
+    border-radius:0.25rem;
+    margin-bottom:0.4rem;
+    padding:1rem;
+}
+
+.btn{
+    color:aliceblue;
+    background-color: rgb(134, 176, 239);
+    cursor:pointer;
+    border:none;
+    border-radius:0.4rem;
+    padding:1rem;
+    margin-bottom:0.4rem;
+}
+
+.toggle{
+    cursor:pointer;
+    text-align: center;
+    font-size:0.8rem;
+}
+
+.toggle:hover{
+    font-weight: bold;
+}
