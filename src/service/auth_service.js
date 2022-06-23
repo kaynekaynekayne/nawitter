@@ -1,25 +1,46 @@
-// import { getAuth, GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-// import {app} from './firebase';
+import { 
+    createUserWithEmailAndPassword, 
+    getAuth, 
+    GithubAuthProvider, 
+    GoogleAuthProvider, 
+    signInWithEmailAndPassword,
+    signInWithPopup
+} from 'firebase/auth';
+import {app} from './firebase';
 
-// class AuthService{
-//     constructor(){
-//         this.firebaseAuth=getAuth(app);
-//         this.googleProvider=new GoogleAuthProvider();
-//         this.githubProvider=new GithubAuthProvider();
-//     }
+class AuthService{
+    constructor(){
+        this.firebaseAuth=getAuth(app);
+        this.googleProvider=new GoogleAuthProvider();
+        this.githubProvider=new GithubAuthProvider();
+    }
 
-//     login(providerName){
-//         const authProvider=this.getProvider(providerName)
-//     }
+    async signup(email,password){
+        const user=await createUserWithEmailAndPassword(this.firebaseAuth,email,password)
+        return user;
+    }
 
-//     providerName(providerName){
-//         switch(providerName){
-//             case 'Google':
-//                 return this.googleProvider;
-//             case 'Git'
-//         }
+    async loginWithEmail(email,password){
+        const user=await signInWithEmailAndPassword(this.firebaseAuth, email,password);
+        return user;
+    }
 
-//     }
-// }
+    async login(providerName){
+        const authProvider=this.getProvider(providerName);
+        return await signInWithPopup(this.firebaseAuth, authProvider);
+    }
 
-// export default AuthService;
+    getProvider(providerName){
+        switch(providerName){
+            case 'google':
+                return this.googleProvider;
+            case 'github':
+                return this.githubProvider;
+            default:
+                throw new Error(`not supported ${providerName}`);
+        }
+
+    }
+}
+
+export default AuthService;

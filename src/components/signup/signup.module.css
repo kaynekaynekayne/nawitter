@@ -1,7 +1,7 @@
 
 .signup{
     margin-bottom:3rem;
-    
+    text-align: center;    
 }
 
 .form__container{
@@ -28,7 +28,6 @@
 
 .toggle{
     cursor:pointer;
-    text-align: center;
     font-size:0.8rem;
 }
 

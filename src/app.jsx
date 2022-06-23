@@ -4,7 +4,7 @@ import Home from './components/nawitter-home/home';
 import Login from './components/login/login';
 import styles from './app.module.css';
 
-function App({isLoggedIn}) {
+function App({isLoggedIn, authService}) {
   return (
     <div className={styles.app}>
       <Router>
@@ -12,7 +12,7 @@ function App({isLoggedIn}) {
           {isLoggedIn ? 
             <Route path="/" element={<Home />}/>
           :
-            <Route path="/" element={<Login />}/>
+            <Route path="/" element={<Login authService={authService}/>}/>
           }
         </Routes>
       </Router>

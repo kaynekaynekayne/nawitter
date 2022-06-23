@@ -1,18 +1,48 @@
-import React from 'react';
+import React,{useRef,useState} from 'react';
 import styles from './signup.module.css';
 
-const SignUp = () => {
+const SignUp = ({authService}) => {
     
+    const emailRef=useRef();
+    const passwordRef=useRef();
+    const formRef=useRef();
+    const [newAccount,setNewAccount]=useState(true);
+    const [error,setError]=useState("");
+
+    const toggleAccount=()=>setNewAccount(prev=>!prev);
+
+    const onSubmit = async (e)=>{
+        e.preventDefault();
+        const userEmail=emailRef.current.value;
+        const userPassword=passwordRef.current.value;
+        try{
+            if(newAccount){
+                const uploaded = await authService.signup(userEmail,userPassword);
+                console.log(uploaded);
+            } else{
+                const uploaded=await authService.loginWithEmail(userEmail,userPassword);
+                console.log(uploaded);
+                console.log('login 완료');
+            }
+        }catch(error){
+            setError(error.message);
+        }
+
+        formRef.current.reset();
+    }
+
     return(
         <section className={styles.signup}>
-            <form className={styles.form__container}>
+            <form ref={formRef} className={styles.form__container}>
                 <input
+                    ref={emailRef}
                     type="email" 
                     placeholder="이메일" 
                     required
                     className={styles.input}
                 />
                 <input
+                    ref={passwordRef}
                     type="password" 
                     placeholder="비밀번호" 
                     required
@@ -21,13 +51,14 @@ const SignUp = () => {
                 />
                 <input
                     type="submit" 
-                    value="로그인"
+                    value={newAccount ? "회원가입" : "로그인"}
                     className={styles.btn}
+                    onClick={onSubmit}
                     required
-                />
+                />{error}
             </form>
-            <p className={styles.toggle}>
-                {true ? "가입 할까요?" : "로그인 할까요?"}
+            <p onClick={toggleAccount} className={styles.toggle}>
+                {newAccount ? "로그인 할까요?" : "가입 할까요?"}
             </p>
         </section>
     )
