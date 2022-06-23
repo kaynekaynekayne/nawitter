@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUp from '../signup/signup';
+import EmailAuth from '../email_auth/emailAuth';
 import styles from './login.module.css';
 
 const Login = ({authService}) => {
@@ -11,7 +11,7 @@ const Login = ({authService}) => {
     return(
         <section className={styles.login}>
             <p className={styles.kwitter}>KWITTER</p>
-            <SignUp authService={authService}/>
+            <EmailAuth authService={authService}/>
             <ul className={styles.list}>
                 <li className={styles.item}>
                     <button

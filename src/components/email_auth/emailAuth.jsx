@@ -1,7 +1,7 @@
 import React,{useRef,useState} from 'react';
-import styles from './signup.module.css';
+import styles from './emailAuth.module.css';
 
-const SignUp = ({authService}) => {
+const EmailAuth = ({authService}) => {
     
     const emailRef=useRef();
     const passwordRef=useRef();
@@ -32,7 +32,7 @@ const SignUp = ({authService}) => {
     }
 
     return(
-        <section className={styles.signup}>
+        <section className={styles.emailAuth}>
             <form ref={formRef} className={styles.form__container}>
                 <input
                     ref={emailRef}
@@ -64,4 +64,4 @@ const SignUp = ({authService}) => {
     )
 };
 
-export default SignUp;
+export default EmailAuth;
