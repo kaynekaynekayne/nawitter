@@ -18,11 +18,8 @@ const EmailAuth = ({authService}) => {
         try{
             if(newAccount){
                 const uploaded = await authService.signup(userEmail,userPassword);
-                console.log(uploaded);
             } else{
                 const uploaded=await authService.loginWithEmail(userEmail,userPassword);
-                console.log(uploaded);
-                console.log('login 완료');
             }
         }catch(error){
             setError(error.message);

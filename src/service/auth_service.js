@@ -1,10 +1,11 @@
 import { 
-    createUserWithEmailAndPassword, 
     getAuth, 
+    createUserWithEmailAndPassword, 
     GithubAuthProvider, 
     GoogleAuthProvider, 
     signInWithEmailAndPassword,
-    signInWithPopup
+    signInWithPopup,
+    onAuthStateChanged
 } from 'firebase/auth';
 import {app} from './firebase';
 
@@ -23,6 +24,12 @@ class AuthService{
     async loginWithEmail(email,password){
         const user=await signInWithEmailAndPassword(this.firebaseAuth, email,password);
         return user;
+    }
+
+    onAuthChange(changeLoginInfo){
+        onAuthStateChanged(this.firebaseAuth, (user)=>{
+            changeLoginInfo(user);
+        })
     }
 
     async login(providerName){

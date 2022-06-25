@@ -8,6 +8,7 @@ const Login = ({authService}) => {
         const result=await authService.login(e.target.name);
         console.log(result);
     }
+    
     return(
         <section className={styles.login}>
             <p className={styles.kwitter}>KWITTER</p>
