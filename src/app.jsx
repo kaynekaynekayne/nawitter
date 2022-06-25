@@ -6,11 +6,23 @@ import styles from './app.module.css';
 
 function App({authService}) {
   const [isLoggedIn, setIsLoggedIn]=useState(false);
+  const [userObj,setUserObj]=useState(null);
+  console.log(userObj);
 
   useEffect(()=>{
     authService
     .onAuthChange((user)=>{
-      user && setIsLoggedIn(true);
+      if(user){
+        setIsLoggedIn(true);
+        setUserObj({
+          userId:user.uid,
+          userEmail:user.email,
+          userName:user.displayName===null ? "anonymous" : user.displayName
+        });
+        console.log(user)
+      } else{
+        setIsLoggedIn(false);
+      }
     })
   },[]);
 
