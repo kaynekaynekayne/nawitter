@@ -17,9 +17,9 @@ const EmailAuth = ({authService}) => {
         const userPassword=passwordRef.current.value;
         try{
             if(newAccount){
-                const uploaded = await authService.signup(userEmail,userPassword);
+                await authService.signup(userEmail,userPassword);
             } else{
-                const uploaded=await authService.loginWithEmail(userEmail,userPassword);
+                await authService.loginWithEmail(userEmail,userPassword);
             }
         }catch(error){
             setError(error.message);
@@ -41,6 +41,7 @@ const EmailAuth = ({authService}) => {
                 <input
                     ref={passwordRef}
                     type="password" 
+                    autoComplete="off"
                     placeholder="비밀번호" 
                     required
                     maxLength={20}

@@ -11,7 +11,7 @@ const Login = ({authService}) => {
     
     return(
         <section className={styles.login}>
-            <p className={styles.kwitter}>KWITTER</p>
+            <p className={styles.kwitter}>NAWITTER</p>
             <EmailAuth authService={authService}/>
             <ul className={styles.list}>
                 <li className={styles.item}>

@@ -5,7 +5,8 @@ import {
     GoogleAuthProvider, 
     signInWithEmailAndPassword,
     signInWithPopup,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signOut
 } from 'firebase/auth';
 import {app} from './firebase';
 
@@ -30,6 +31,10 @@ class AuthService{
         onAuthStateChanged(this.firebaseAuth, (user)=>{
             changeLoginInfo(user);
         })
+    }
+
+    logout(){
+        return signOut(this.firebaseAuth);
     }
 
     async login(providerName){

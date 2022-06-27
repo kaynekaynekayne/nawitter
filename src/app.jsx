@@ -1,13 +1,13 @@
 import React,{useState, useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/nawitter-home/home';
 import Login from './components/login/login';
 import styles from './app.module.css';
+import Profile from './components/profile/profile';
 
 function App({authService}) {
   const [isLoggedIn, setIsLoggedIn]=useState(false);
   const [userObj,setUserObj]=useState(null);
-  console.log(userObj);
 
   useEffect(()=>{
     authService
@@ -19,7 +19,6 @@ function App({authService}) {
           userEmail:user.email,
           userName:user.displayName===null ? "anonymous" : user.displayName
         });
-        console.log(user)
       } else{
         setIsLoggedIn(false);
       }
@@ -29,9 +28,31 @@ function App({authService}) {
   return (
     <div className={styles.app}>
       <Router>
+        <nav className={styles.container}>
+          {isLoggedIn && (
+            <ul className={styles.navi}>
+              <li>
+                <Link to="/">
+                  <i id={styles.home} className="fas fa-home"></i>
+                </Link>
+              </li>
+              <li>
+                <Link to="/profile">
+                  <i id={styles.profile} className="fas fa-cog">
+                  </i>
+                </Link>
+              </li>
+            </ul>
+          )}
+        </nav>
         <Routes>
           {isLoggedIn ? 
-            <Route path="/" element={<Home />}/>
+            (
+              <>
+                <Route path="/" element={<Home userObj={userObj}/>}/>
+                <Route path="/profile" element={<Profile authService={authService} userObj={userObj}/>} />
+              </>
+            )
           :
             <Route path="/" element={<Login authService={authService}/>}/>
           }
