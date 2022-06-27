@@ -1,0 +1,53 @@
+.form{
+    width:21rem;
+    margin:0 auto;
+}
+
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.input{
+    width: 17rem;
+    height:2.5rem;
+    border:1px solid #c6c6c0;
+    border-radius: 2.5rem;
+    padding-left:1rem;
+    font-size:0.8rem;
+}
+
+input:focus{
+    outline:none;
+}
+
+.chooseImg{
+    color:rgb(101, 99, 112);
+    cursor:pointer;
+}
+
+.chooseImg:hover, .submit:hover{
+    transition:all 0.8s ease;
+    color:rgb(50, 52, 44);
+}
+
+.submit{
+    color:rgb(101, 99, 112);
+    background-color: transparent;
+    border:none;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width:767px){
+    /* .input{
+        width:17rem;
+        height:2.5rem;
+        border:1px solid #c6c6c0;
+        border-radius: 2.5rem;
+        padding-left:1rem;
+        font-size:0.8rem;
+    } */
+}
