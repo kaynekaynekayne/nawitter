@@ -13,7 +13,7 @@
 .input{
     width: 17rem;
     height:2.5rem;
-    border:1px solid #c6c6c0;
+    border:none;
     border-radius: 2.5rem;
     padding-left:1rem;
     font-size:0.8rem;
@@ -24,25 +24,32 @@ input:focus{
 }
 
 .chooseImg{
-    color:rgb(101, 99, 112);
+    color:#7a92a5;
     cursor:pointer;
+    transition:all 0.6s ease;
 }
 
 .chooseImg:hover, .submit:hover{
-    transition:all 0.8s ease;
-    color:rgb(50, 52, 44);
+    color:rgb(73, 74, 69);
+    transform: scale(1.1);
 }
 
 .submit{
-    color:rgb(101, 99, 112);
+    color:#7a92a5;
     background-color: transparent;
     border:none;
     cursor: pointer;
+    transition:all 0.8s ease;
 }
 
 
 @media screen and (max-width:767px){
-    /* .input{
+    /* .form{
+        width:21rem;
+        margin:0 auto;
+    }
+    
+    .input{
         width:17rem;
         height:2.5rem;
         border:1px solid #c6c6c0;
