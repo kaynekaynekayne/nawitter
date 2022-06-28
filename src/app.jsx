@@ -5,7 +5,7 @@ import Login from './components/login/login';
 import styles from './app.module.css';
 import Profile from './components/profile/profile';
 
-function App({authService}) {
+function App({authService,nawitService}) {
   const [isLoggedIn, setIsLoggedIn]=useState(false);
   const [userObj,setUserObj]=useState(null);
 
@@ -14,11 +14,7 @@ function App({authService}) {
     .onAuthChange((user)=>{
       if(user){
         setIsLoggedIn(true);
-        setUserObj({
-          userId:user.uid,
-          userEmail:user.email,
-          userName:user.displayName===null ? "anonymous" : user.displayName
-        });
+        setUserObj(user);
       } else{
         setIsLoggedIn(false);
       }
@@ -49,7 +45,7 @@ function App({authService}) {
           {isLoggedIn ? 
             (
               <>
-                <Route path="/" element={<Home userObj={userObj}/>}/>
+                <Route path="/" element={<Home userObj={userObj} nawitService={nawitService}/>}/>
                 <Route path="/profile" element={<Profile authService={authService} userObj={userObj}/>} />
               </>
             )

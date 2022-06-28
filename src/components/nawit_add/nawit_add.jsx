@@ -1,19 +1,34 @@
 import React, { useRef } from 'react';
 import styles from './nawit_add.module.css';
 
-const NawitAdd = () => {
+const NawitAdd = ({nawitService,userObj}) => {
 
     const inputRef=useRef();
     
-    const onSubmit=(e)=>{
+    const onSubmit=async(e)=>{
         e.preventDefault();
         const nawit=inputRef.current.value;
         console.log(nawit);
 
+        let date=new Date();
+    
+        const nawitObj={
+            content:nawit,
+            created:{
+                year:date.getFullYear(),
+                month:date.getMonth()+1,
+                day:date.getDate(),
+                hour:date.getHours(),
+                min:date.getMinutes(),
+            },
+            creatorId:userObj.uid,
+            creatorName:userObj.displayName,
+        }
+
         try{
-            
-        } catch{
-            
+            await nawitService.uploadContent(nawitObj)
+        } catch(error){
+            alert(error);
         };
         
         inputRef.current.value="";

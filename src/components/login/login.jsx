@@ -4,9 +4,8 @@ import styles from './login.module.css';
 
 const Login = ({authService}) => {
     
-    const onLogin=async(e)=>{ //async 버전
-        const result=await authService.login(e.target.name);
-        console.log(result);
+    const onLogin=async(e)=>{
+        await authService.login(e.target.name);
     }
     
     return(

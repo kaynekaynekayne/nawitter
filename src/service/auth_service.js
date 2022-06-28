@@ -18,13 +18,11 @@ class AuthService{
     }
 
     async signup(email,password){
-        const user=await createUserWithEmailAndPassword(this.firebaseAuth,email,password)
-        return user;
+        return await createUserWithEmailAndPassword(this.firebaseAuth,email,password)
     }
 
     async loginWithEmail(email,password){
-        const user=await signInWithEmailAndPassword(this.firebaseAuth, email,password);
-        return user;
+        return await signInWithEmailAndPassword(this.firebaseAuth, email,password);
     }
 
     onAuthChange(changeLoginInfo){
