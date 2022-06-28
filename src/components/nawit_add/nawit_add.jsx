@@ -14,6 +14,7 @@ const NawitAdd = ({nawitService,userObj}) => {
     
         const nawitObj={
             content:nawit,
+            createdAt:Date.now(),
             created:{
                 year:date.getFullYear(),
                 month:date.getMonth()+1,
