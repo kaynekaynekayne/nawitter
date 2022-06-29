@@ -1,14 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './nawit_add.module.css';
 
 const NawitAdd = ({nawitService,userObj}) => {
 
     const inputRef=useRef();
+    const [attachment,setAttachment]=useState("");
+    const [previewImg, setPreviewImg]=useState(null);
     
     const onSubmit=async(e)=>{
         e.preventDefault();
         const nawit=inputRef.current.value;
-        console.log(nawit);
 
         let date=new Date();
     
@@ -44,7 +45,6 @@ const NawitAdd = ({nawitService,userObj}) => {
                     type="text"
                     placeholder="say everything you want"
                     maxLength="120"
-                    // value={}
                     autoFocus
                 />
                 <label htmlFor="file-upload" className={styles.chooseImg}>

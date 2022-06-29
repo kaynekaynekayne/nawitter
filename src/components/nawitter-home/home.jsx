@@ -12,14 +12,20 @@ const Home = ({userObj, nawitService}) => {
         nawitService.getContent(nawits=>{
             setNawits(nawits);
         });
-        
+
     },[]);
 
     return(
         <section className={styles.home}>
             <NawitAdd userObj={userObj} nawitService={nawitService}/>
             <div>
-
+                {nawits.map(nawit=>(
+                    <Nawit
+                        key={nawit.id}
+                        nawit={nawit}
+                        isOwner={nawit.creatorId===userObj.uid}
+                    />
+                ))}
             </div>
         </section>
     )
