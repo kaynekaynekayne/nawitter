@@ -44,7 +44,7 @@ const NawitAdd = ({nawitService,userObj}) => {
                     className={styles.input} 
                     type="text"
                     placeholder="say everything you want"
-                    maxLength="120"
+                    maxLength="150"
                     autoFocus
                 />
                 <label htmlFor="file-upload" className={styles.chooseImg}>
