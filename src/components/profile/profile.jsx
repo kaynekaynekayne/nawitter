@@ -20,7 +20,7 @@ const Profile = ({authService, userObj}) => {
         <section className={styles.profile}>
             <div className={styles.container}>
                 <h1>Profile</h1>
-                
+                <h2>@{userObj.displayName}</h2>
             </div>
             <button onClick={onLogout}>logout</button>
         </section>

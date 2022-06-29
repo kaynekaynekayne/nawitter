@@ -14,7 +14,8 @@ function App({authService,nawitService}) {
     .onAuthChange((user)=>{
       if(user){
         setIsLoggedIn(true);
-        setUserObj(user);
+        setUserObj({...user, 
+          displayName: user.displayName===null ? "anonymous" : user.displayName});
       } else{
         setIsLoggedIn(false);
       }
