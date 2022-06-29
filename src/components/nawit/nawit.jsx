@@ -1,7 +1,11 @@
 import React from 'react';
 import styles from './nawit.module.css';
 
-const Nawit = ({nawit, isOwner}) => {
+const Nawit = ({nawit, isOwner, nawitService}) => {
+
+    const deletePost=(id)=>{
+        nawitService.deleteContent(id);
+    }
 
     return(
         <section className={styles.nawit}>
@@ -18,6 +22,7 @@ const Nawit = ({nawit, isOwner}) => {
                             </button>
                             <button 
                                 className={`${styles.delete} ${styles.button}`}
+                                onClick={()=>deletePost(nawit.id)}
                                 >삭제
                             </button>
                         </div>

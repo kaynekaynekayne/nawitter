@@ -1,4 +1,13 @@
-import { addDoc, collection, doc, getFirestore, onSnapshot, orderBy, query } from 'firebase/firestore'; 
+import { 
+    addDoc, 
+    collection, 
+    deleteDoc, 
+    doc, 
+    getFirestore, 
+    onSnapshot, 
+    orderBy, 
+    query 
+} from 'firebase/firestore'; 
 import {app} from './firebase';
 
 class NawitService{
@@ -16,6 +25,11 @@ class NawitService{
             const getNawits=snapshot.docs.map((doc)=>({...doc.data(), id:doc.id}))
             getNawits && onUpdate(getNawits);
         })
+    }
+
+    deleteContent(id){
+        const docRef=doc(this.firestore,"nawits",id);
+        deleteDoc(docRef);
     }
 }
 

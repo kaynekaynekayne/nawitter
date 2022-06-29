@@ -24,6 +24,7 @@ const Home = ({userObj, nawitService}) => {
                         key={nawit.id}
                         nawit={nawit}
                         isOwner={nawit.creatorId===userObj.uid}
+                        nawitService={nawitService}
                     />
                 ))}
             </div>
