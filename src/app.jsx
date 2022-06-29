@@ -24,8 +24,8 @@ function App({authService,nawitService}) {
   return (
     <div className={styles.app}>
       <Router>
-        <nav className={styles.container}>
           {isLoggedIn && (
+          <nav className={styles.container}>
             <ul className={styles.navi}>
               <li>
                 <Link to="/">
@@ -39,8 +39,8 @@ function App({authService,nawitService}) {
                 </Link>
               </li>
             </ul>
+          </nav>
           )}
-        </nav>
         <Routes>
           {isLoggedIn ? 
             (
