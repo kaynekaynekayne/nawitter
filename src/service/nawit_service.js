@@ -6,7 +6,8 @@ import {
     getFirestore, 
     onSnapshot, 
     orderBy, 
-    query 
+    query, 
+    updateDoc
 } from 'firebase/firestore'; 
 import {app} from './firebase';
 
@@ -30,6 +31,14 @@ class NawitService{
     async deleteContent(id){
         const docRef=doc(this.firestore,"nawits",id);
         await deleteDoc(docRef);
+    }
+
+    async editContent(id,text){
+        const docRef=doc(this.firestore,"nawits",id);
+        await updateDoc(docRef, {
+            content:text,
+        })
+        
     }
 }
 

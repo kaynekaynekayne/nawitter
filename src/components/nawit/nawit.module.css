@@ -16,13 +16,13 @@
     text-align: left;
 }
 
-.bottomBox{
+.action{
     display: flex;
     justify-content: space-between;
     color:rgb(158, 156, 156);
 }
 
-.buttons{
+.actionButtons{
     line-height: 50px;
 }
 
