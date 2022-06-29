@@ -3,8 +3,8 @@ import styles from './nawit.module.css';
 
 const Nawit = ({nawit, isOwner, nawitService}) => {
 
-    const deletePost=(id)=>{
-        nawitService.deleteContent(id);
+    const deletePost=async(id)=>{
+        await nawitService.deleteContent(id);
     }
 
     return(

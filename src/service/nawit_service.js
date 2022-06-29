@@ -27,9 +27,9 @@ class NawitService{
         })
     }
 
-    deleteContent(id){
+    async deleteContent(id){
         const docRef=doc(this.firestore,"nawits",id);
-        deleteDoc(docRef);
+        await deleteDoc(docRef);
     }
 }
 
