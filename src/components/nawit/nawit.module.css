@@ -6,7 +6,6 @@
     padding:1.2rem;
     border-radius:1.2rem;
     background-color: rgb(243, 244, 246);
-    /* font-family: 'Nunito', sans-serif; */
     font-family: 'Gowun Dodum', serif;
     font-size:0.9rem;
     word-break:break-all;
@@ -31,4 +30,36 @@
     background-color: transparent;
     cursor: pointer;
     font-size:0.8rem;
+}
+
+
+.textarea{
+    width:100%;
+    height:6rem;
+    resize:none;
+    background-color: transparent;
+    border:none;
+    font-family: 'Gowun Dodum', serif;
+    font-size:0.9rem;
+}
+
+.textarea:focus{
+    background-color: transparent;
+    outline: none;
+}
+
+.updateBox{
+    display: flex;
+    justify-content: space-around;
+    color:rgb(113, 118, 115);
+}
+
+.editCheck{
+    border:none;
+    background:transparent;
+    cursor:pointer;
+}
+
+.editCancel{
+    cursor:pointer;
 }

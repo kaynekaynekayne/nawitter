@@ -38,7 +38,6 @@ class NawitService{
         await updateDoc(docRef, {
             content:text,
         })
-        
     }
 }
 

@@ -39,13 +39,19 @@ const Nawit = ({nawit, isOwner, nawitService}) => {
                             className={styles.textarea}
                             autoFocus
                         />
-                        <input 
-                            type="submit" 
-                            value="확인"
-                            className={styles.editCheck}
-                        />
+                        <div className={styles.updateBox}>
+                            <input 
+                                type="submit" 
+                                value="확인"
+                                className={styles.editCheck}
+                            />
+                            <span 
+                                onClick={toggleEdit}
+                                className={styles.editCancel}
+                            ><i className="fa-solid fa-arrow-rotate-left"></i>
+                            </span>
+                        </div>
                     </form>
-                    <button onClick={toggleEdit}>취소</button>
                 </>
             ) : (
                 <>
