@@ -36,31 +36,52 @@ const NawitAdd = ({nawitService,userObj}) => {
         inputRef.current.value="";
     }
 
-    return(
-        <form className={styles.form} onSubmit={onSubmit}>
-            <div className={styles.container}>
-                <input
-                    ref={inputRef}
-                    className={styles.input} 
-                    type="text"
-                    placeholder="say everything you want"
-                    maxLength="150"
-                    autoFocus
-                />
-                <label htmlFor="file-upload" className={styles.chooseImg}>
-                    <i className="fas fa-image"></i>
-                </label>
-                <input 
-                    id="file-upload"
-                    type="file"
-                    style={{display:"none"}}
-                />
-                <button className={styles.submit} type="submit">
-                    <i className="fas fa-pen"></i>
-                </button>
-            </div>
+    const onFileChange=(event)=>{
+        const {
+            target: {files}
+        }=event;
 
-        </form>
+        setAttachment(files[0]);
+    }
+    console.log(attachment);
+
+    return(
+        <>
+            <form className={styles.form} onSubmit={onSubmit}>
+                <div className={styles.container}>
+                    <input
+                        ref={inputRef}
+                        className={styles.input} 
+                        type="text"
+                        placeholder="say everything you want"
+                        maxLength="150"
+                        autoFocus
+                    />
+                    <label htmlFor="file-upload" className={styles.chooseImg}>
+                        <i className="fas fa-image"></i>
+                    </label>
+                    <input 
+                        id="file-upload"
+                        type="file"
+                        style={{display:"none"}}
+                        onChange={onFileChange}
+                    />
+                    <button className={styles.submit} type="submit">
+                        <i className="fas fa-pen"></i>
+                    </button>
+                </div>
+                {attachment && 
+                    <div className={styles.preview}>
+                        <img 
+                            src={previewImg}
+                            height="auto"
+                            style={{maxWidth:'5rem'}}
+                        />
+                        <span className={styles.previewName}>이미지 이름 자리</span>
+                    </div>
+                }
+            </form>
+        </>
     )
 };
 
