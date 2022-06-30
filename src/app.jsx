@@ -8,6 +8,7 @@ import Profile from './components/profile/profile';
 function App({authService,nawitService}) {
   const [isLoggedIn, setIsLoggedIn]=useState(false);
   const [userObj,setUserObj]=useState(null);
+  const [init, setInit]=useState(false);
 
   useEffect(()=>{
     authService
@@ -19,12 +20,14 @@ function App({authService,nawitService}) {
       } else{
         setIsLoggedIn(false);
       }
+      setInit(true);
     })
   },[]);
 
   return (
     <div className={styles.app}>
-      <Router>
+      {init ? (
+        <Router>
         {isLoggedIn && (
           <nav className={styles.container}>
             <ul className={styles.navi}>
@@ -55,6 +58,9 @@ function App({authService,nawitService}) {
           }
         </Routes>
       </Router>
+      ) : (
+        <h1>Loading...</h1>
+      )}
     </div>
   );
 }
