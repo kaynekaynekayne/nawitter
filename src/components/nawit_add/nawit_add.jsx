@@ -41,9 +41,10 @@ const NawitAdd = ({nawitService,userObj}) => {
             target: {files}
         }=event;
 
+        const imageUrl=URL.createObjectURL(files[0]);
+        setPreviewImg(imageUrl);
         setAttachment(files[0]);
     }
-    console.log(attachment);
 
     return(
         <>
@@ -73,11 +74,12 @@ const NawitAdd = ({nawitService,userObj}) => {
                 {attachment && 
                     <div className={styles.preview}>
                         <img 
+                            className={styles.previewImage}
                             src={previewImg}
                             height="auto"
                             style={{maxWidth:'5rem'}}
                         />
-                        <span className={styles.previewName}>이미지 이름 자리</span>
+                        <span className={styles.previewName}>{attachment.name}</span>
                     </div>
                 }
             </form>

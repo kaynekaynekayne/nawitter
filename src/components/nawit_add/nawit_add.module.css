@@ -45,6 +45,22 @@ input:focus{
 }
 
 
+.preview{
+    padding: 0.8rem;
+    display:flex;
+    justify-content: space-between;
+}
+
+.previewImage{
+    border:2px solid white;
+}
+
+.previewName{
+    color:rgb(89, 88, 88);
+    font-family: 'Nunito', sans-serif;
+    font-size:0.7rem;
+}
+
 @media screen and (max-width:767px){
     /* .form{
         width:21rem;

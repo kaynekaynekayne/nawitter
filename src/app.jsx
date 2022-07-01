@@ -59,7 +59,7 @@ function App({authService,nawitService}) {
         </Routes>
       </Router>
       ) : (
-        <h1>Loading...</h1>
+        <h3>Loading...</h3>
       )}
     </div>
   );

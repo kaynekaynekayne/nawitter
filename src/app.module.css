@@ -26,6 +26,7 @@ body{
 }
 
 .navi{
+    background-color: #c8d1e5;
     display: flex;
     justify-content: space-around;
     align-items: center;
