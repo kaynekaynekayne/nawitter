@@ -5,7 +5,7 @@ import Login from './components/login/login';
 import styles from './app.module.css';
 import Profile from './components/profile/profile';
 
-function App({authService,nawitService}) {
+function App({authService,firestoreService}) {
   const [isLoggedIn, setIsLoggedIn]=useState(false);
   const [userObj,setUserObj]=useState(null);
   const [init, setInit]=useState(false);
@@ -49,7 +49,7 @@ function App({authService,nawitService}) {
           {isLoggedIn ? 
             (
               <>
-                <Route path="/" element={<Home userObj={userObj} nawitService={nawitService}/>}/>
+                <Route path="/" element={<Home userObj={userObj} firestoreService={firestoreService}/>}/>
                 <Route path="/profile" element={<Profile authService={authService} userObj={userObj}/>} />
               </>
             )

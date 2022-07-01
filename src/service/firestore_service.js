@@ -11,7 +11,7 @@ import {
 } from 'firebase/firestore'; 
 import {app} from './firebase';
 
-class NawitService{
+class FirestoreService{
     constructor(){
         this.firestore=getFirestore(app);
     }
@@ -41,4 +41,4 @@ class NawitService{
     }
 }
 
-export default NawitService;
+export default FirestoreService;

@@ -3,13 +3,13 @@ import styles from './home.module.css';
 import NawitAdd from '../nawit_add/nawit_add';
 import Nawit from '../nawit/nawit';
 
-const Home = ({userObj, nawitService}) => {
+const Home = ({userObj, firestoreService}) => {
     
     const [nawits,setNawits]=useState([]);
 
     useEffect(()=>{
 
-        nawitService.getContent(nawits=>{
+        firestoreService.getContent(nawits=>{
             setNawits(nawits);
         });
 
@@ -17,14 +17,14 @@ const Home = ({userObj, nawitService}) => {
 
     return(
         <section className={styles.home}>
-            <NawitAdd userObj={userObj} nawitService={nawitService}/>
+            <NawitAdd userObj={userObj} firestoreService={firestoreService}/>
             <div>
                 {nawits.map(nawit=>(
                     <Nawit
                         key={nawit.id}
                         nawit={nawit}
                         isOwner={nawit.creatorId===userObj.uid}
-                        nawitService={nawitService}
+                        firestoreService={firestoreService}
                     />
                 ))}
             </div>

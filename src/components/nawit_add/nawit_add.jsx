@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styles from './nawit_add.module.css';
 
-const NawitAdd = ({nawitService,userObj}) => {
+const NawitAdd = ({firestoreService,userObj}) => {
 
     const inputRef=useRef();
     const [attachment,setAttachment]=useState("");
@@ -28,7 +28,7 @@ const NawitAdd = ({nawitService,userObj}) => {
         }
 
         try{
-            await nawitService.uploadContent(nawitObj)
+            await firestoreService.uploadContent(nawitObj)
         } catch(error){
             alert(error);
         };
