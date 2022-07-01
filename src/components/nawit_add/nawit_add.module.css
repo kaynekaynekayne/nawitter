@@ -47,18 +47,16 @@ input:focus{
 
 .preview{
     padding: 0.8rem;
-    display:flex;
-    justify-content: space-between;
 }
 
 .previewImage{
     border:2px solid white;
 }
 
-.previewName{
-    color:rgb(89, 88, 88);
-    font-family: 'Nunito', sans-serif;
-    font-size:0.7rem;
+.previewClear{
+    cursor: pointer;
+    margin-left:0.3rem;
+    color:rgb(58, 57, 57);
 }
 
 @media screen and (max-width:767px){

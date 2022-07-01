@@ -46,6 +46,10 @@ const NawitAdd = ({nawitService,userObj}) => {
         setAttachment(files[0]);
     }
 
+    const onClearAttachment=()=>{
+        setAttachment("");
+    }
+
     return(
         <>
             <form className={styles.form} onSubmit={onSubmit}>
@@ -79,7 +83,9 @@ const NawitAdd = ({nawitService,userObj}) => {
                             height="auto"
                             style={{maxWidth:'5rem'}}
                         />
-                        <span className={styles.previewName}>{attachment.name}</span>
+                        <span onClick={onClearAttachment} className={styles.previewClear}>
+                            <i className="fa-solid fa-xmark"></i>
+                        </span>
                     </div>
                 }
             </form>
