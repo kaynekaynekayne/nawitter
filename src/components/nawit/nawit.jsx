@@ -1,13 +1,14 @@
 import React,{useState} from 'react';
 import styles from './nawit.module.css';
 
-const Nawit = ({nawit, isOwner, firestoreService}) => {
+const Nawit = ({nawit, isOwner, firestoreService, storageService}) => {
 
     const [editing,setEditing]=useState(false);
     const [newContent,setNewContent]=useState(nawit.content);
 
     const deletePost=async(id)=>{
         await firestoreService.deleteContent(id);
+        nawit.attachmentUrl!=="" && await storageService.deleteImage(nawit.attachmentUrl);
     }
 
     const toggleEdit=()=>setEditing((prev)=>!prev);

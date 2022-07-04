@@ -29,6 +29,7 @@ const Home = ({userObj, firestoreService, storageService}) => {
                         nawit={nawit}
                         isOwner={nawit.creatorId===userObj.uid}
                         firestoreService={firestoreService}
+                        storageService={storageService}
                     />
                 ))}
             </div>

@@ -20,8 +20,6 @@ const NawitAdd = ({firestoreService,userObj,storageService}) => {
             attachmentUrl=uploaded;
         }
 
-        console.log(attachmentUrl);
-
         const nawitObj={
             content:nawit,
             createdAt:Date.now(),
@@ -60,6 +58,7 @@ const NawitAdd = ({firestoreService,userObj,storageService}) => {
 
     const onClearAttachment=()=>{
         setAttachment("");
+        setPreviewImg(null);
     }
 
     return(
