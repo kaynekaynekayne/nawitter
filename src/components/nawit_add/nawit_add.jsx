@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styles from './nawit_add.module.css';
 
-const NawitAdd = ({firestoreService,userObj}) => {
+const NawitAdd = ({firestoreService,userObj,storageService}) => {
 
     const inputRef=useRef();
     const [attachment,setAttachment]=useState("");
@@ -11,8 +11,13 @@ const NawitAdd = ({firestoreService,userObj}) => {
         e.preventDefault();
         const nawit=inputRef.current.value;
 
+        let attachmentUrl="";
         let date=new Date();
     
+        if(attachment!==""){
+            await storageService.uploadImage(attachment);
+        }
+
         const nawitObj={
             content:nawit,
             createdAt:Date.now(),
@@ -25,6 +30,7 @@ const NawitAdd = ({firestoreService,userObj}) => {
             },
             creatorId:userObj.uid,
             creatorName:userObj.displayName,
+            attachmentUrl,
         }
 
         try{
@@ -34,6 +40,7 @@ const NawitAdd = ({firestoreService,userObj}) => {
         };
         
         inputRef.current.value="";
+        setAttachment("");
     }
 
     const onFileChange=(event)=>{
