@@ -6,7 +6,8 @@ const NawitAdd = ({firestoreService,userObj,storageService}) => {
     const inputRef=useRef();
     const [attachment,setAttachment]=useState("");
     const [previewImg, setPreviewImg]=useState(null);
-    
+    console.log(previewImg);
+
     const onSubmit=async(e)=>{
         e.preventDefault();
         const nawit=inputRef.current.value;
@@ -15,8 +16,11 @@ const NawitAdd = ({firestoreService,userObj,storageService}) => {
         let date=new Date();
     
         if(attachment!==""){
-            await storageService.uploadImage(attachment);
+            const uploaded=await storageService.uploadImage(attachment);
+            attachmentUrl=uploaded;
         }
+
+        console.log(attachmentUrl);
 
         const nawitObj={
             content:nawit,
@@ -41,6 +45,7 @@ const NawitAdd = ({firestoreService,userObj,storageService}) => {
         
         inputRef.current.value="";
         setAttachment("");
+        setPreviewImg("");
     }
 
     const onFileChange=(event)=>{
@@ -61,6 +66,7 @@ const NawitAdd = ({firestoreService,userObj,storageService}) => {
         <>
             <form className={styles.form} onSubmit={onSubmit}>
                 <div className={styles.container}>
+                    {previewImg}
                     <input
                         ref={inputRef}
                         className={styles.input} 

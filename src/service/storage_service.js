@@ -9,12 +9,9 @@ class StorageService{
 
     async uploadImage(attachment){
         const imageRef=ref(this.storage,`images/${attachment.name+v4()}`);
-        const a= await uploadBytes(imageRef, attachment);
-        console.log(a)
-        // const attachmentUrl=await getDownloadURL(imageRef);
-        // return attachmentUrl;
+        await uploadBytes(imageRef, attachment);
+        return await getDownloadURL(imageRef);
     }
-    
     
 }
 
