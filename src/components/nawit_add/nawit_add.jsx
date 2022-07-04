@@ -80,10 +80,11 @@ const NawitAdd = ({firestoreService,userObj,storageService}) => {
                     <input 
                         id="file-upload"
                         type="file"
+                        aria-label="upload image"
                         style={{display:"none"}}
                         onChange={onFileChange}
                     />
-                    <button className={styles.submit} type="submit">
+                    <button className={styles.submit} type="submit" aria-label="submit content">
                         <i className="fas fa-pen"></i>
                     </button>
                 </div>
@@ -94,6 +95,7 @@ const NawitAdd = ({firestoreService,userObj,storageService}) => {
                             src={previewImg}
                             height="auto"
                             style={{maxWidth:'5rem'}}
+                            alt="preview photo"
                         />
                         <span onClick={onClearAttachment} className={styles.previewClear}>
                             <i className="fa-solid fa-xmark"></i>

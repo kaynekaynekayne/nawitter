@@ -58,7 +58,7 @@ const Nawit = ({nawit, isOwner, firestoreService, storageService}) => {
                 <>
                     <p className={styles.content}>{nawit.content}</p>
                     {nawit.attachmentUrl && 
-                        <img src={nawit.attachmentUrl} className={styles.uploadImage}/>
+                        <img src={nawit.attachmentUrl} className={styles.uploadImage} alt="photo"/>
                     }
                     <div className={styles.action}>
                         <p className={styles.nickname}>@{nawit.creatorName}</p>

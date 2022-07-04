@@ -32,12 +32,12 @@ function App({authService,firestoreService,storageService}) {
           <nav className={styles.container}>
             <ul className={styles.navi}>
               <li>
-                <Link to="/">
+                <Link to="/" aria-label="home">
                   <i id={styles.home} className="fas fa-home"></i>
                 </Link>
               </li>
               <li>
-                <Link to="/profile">
+                <Link to="/profile" aria-label="profile">
                   <i id={styles.profile} className="fas fa-cog">
                   </i>
                 </Link>
@@ -49,7 +49,12 @@ function App({authService,firestoreService,storageService}) {
           {isLoggedIn ? 
             (
               <>
-                <Route path="/" element={<Home userObj={userObj} firestoreService={firestoreService} storageService={storageService}/>}/>
+                <Route path="/" element={<Home 
+                  userObj={userObj} 
+                  firestoreService={firestoreService} 
+                  storageService={storageService}/>
+                  }
+                />
                 <Route path="/profile" element={<Profile authService={authService} userObj={userObj}/>} />
               </>
             )
