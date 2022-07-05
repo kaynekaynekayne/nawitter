@@ -51,7 +51,7 @@ const Profile = ({authService, userObj, refreshUser}) => {
                     />
                 </form>
             </div>
-            <button onClick={onLogout} className={styles.logout}>logout</button>
+            <button onClick={onLogout} className={styles.logout}>EXIT</button>
         </section>
     )
 };
