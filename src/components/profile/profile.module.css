@@ -14,6 +14,10 @@
     /* background-color: white; */
 }
 
+.introduction{
+    font-size:0.9rem;
+    font-weight: bolder;
+}
 .input{
     width:9rem;
     border:none;

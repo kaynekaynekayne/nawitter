@@ -34,7 +34,8 @@ const Profile = ({authService, userObj, refreshUser}) => {
     return(
         <section className={styles.profile}>
             <div className={styles.container}>
-                <p>@{userObj.displayName}</p>
+                <p className={styles.introduction}>
+                    @{userObj.displayName}{userObj.displayName.endsWith('s') ? "'" : "'s"} profile</p>
                 <form className={styles.form} onSubmit={onSubmit}>
                     <input 
                         className={styles.input}
