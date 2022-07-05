@@ -67,7 +67,14 @@ function App({authService,firestoreService,storageService}) {
                   storageService={storageService}/>
                   }
                 />
-                <Route path="/profile" element={<Profile authService={authService} userObj={userObj} refreshUser={refreshUser}/>} />
+                <Route path="/profile" element={<Profile 
+                  authService={authService} 
+                  userObj={userObj} 
+                  refreshUser={refreshUser}
+                  firestoreService={firestoreService}
+                  />
+                  }
+                />
               </>
             )
           :

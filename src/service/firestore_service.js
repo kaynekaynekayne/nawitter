@@ -3,11 +3,13 @@ import {
     collection, 
     deleteDoc, 
     doc, 
+    getDocs, 
     getFirestore, 
     onSnapshot, 
     orderBy, 
     query, 
-    updateDoc
+    updateDoc,
+    where
 } from 'firebase/firestore'; 
 import {app} from './firebase';
 
@@ -26,6 +28,13 @@ class FirestoreService{
             const getNawits=snapshot.docs.map((doc)=>({...doc.data(), id:doc.id}))
             getNawits && onUpdate(getNawits);
         })
+    }
+
+    async getMyContents(id, onUpdate){
+        const q=query(collection(this.firestore, "nawits"),where("creatorId","==",id),orderBy("createdAt","desc"));
+        const posts=await getDocs(q);
+        const getPosts=posts.docs.map((post)=>({...post.data(),id:post.id}));
+        getPosts && onUpdate(getPosts)
     }
 
     async deleteContent(id){

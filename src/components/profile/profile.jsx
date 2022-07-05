@@ -1,8 +1,9 @@
 import React,{useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './profile.module.css';
+import Preview from '../nawit_preview/preview';
 
-const Profile = ({authService, userObj, refreshUser}) => {
+const Profile = ({authService, userObj, refreshUser, firestoreService}) => {
 
     const [newDisplayName, setNewDisplayName]=useState(userObj.displayName);
     
@@ -52,6 +53,7 @@ const Profile = ({authService, userObj, refreshUser}) => {
                     />
                 </form>
             </div>
+            <Preview userObj={userObj} firestoreService={firestoreService}/>
             <button onClick={onLogout} className={styles.logout}>EXIT</button>
         </section>
     )
