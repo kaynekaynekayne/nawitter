@@ -6,7 +6,8 @@ import {
     signInWithEmailAndPassword,
     signInWithPopup,
     onAuthStateChanged,
-    signOut
+    signOut,
+    updateProfile,
 } from 'firebase/auth';
 import {app} from './firebase';
 
@@ -29,6 +30,12 @@ class AuthService{
         onAuthStateChanged(this.firebaseAuth, (user)=>{
             changeLoginInfo(user);
         })
+    }
+
+    async updateNickname(newDisplayName){
+        await updateProfile(this.firebaseAuth.currentUser, {
+            displayName: newDisplayName,
+        });
     }
 
     logout(){

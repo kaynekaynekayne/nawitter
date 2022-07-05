@@ -6,7 +6,6 @@ const NawitAdd = ({firestoreService,userObj,storageService}) => {
     const inputRef=useRef();
     const [attachment,setAttachment]=useState("");
     const [previewImg, setPreviewImg]=useState(null);
-    console.log(previewImg);
 
     const onSubmit=async(e)=>{
         e.preventDefault();
@@ -36,7 +35,7 @@ const NawitAdd = ({firestoreService,userObj,storageService}) => {
         }
 
         try{
-            await firestoreService.uploadContent(nawitObj)
+            await firestoreService.uploadContent(nawitObj);
         } catch(error){
             alert(error);
         };

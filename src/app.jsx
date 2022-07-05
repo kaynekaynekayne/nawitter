@@ -24,6 +24,8 @@ function App({authService,firestoreService,storageService}) {
     })
   },[]);
 
+  
+
   return (
     <div className={styles.app}>
       {init ? (

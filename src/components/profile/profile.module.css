@@ -1,8 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Nunito:wght@400&display=swap');
 
 .profile{
     width: 100%;
     height: 100%;
     max-width: 80rem;
+    font-family: 'Nunito', sans-serif;
     text-align: center;
 }
 
+.container{
+    width:25rem;
+    margin:0 auto;
+    /* background-color: white; */
+}
+
+.input{
+    width:9rem;
+    border:none;
+    border-radius:0.8rem;
+    padding:0.5rem 1rem;
+    font-size:0.8rem;
+    text-align: center;
+}
+
+.submit{
+    border:none;
+    background-color: transparent;
+    cursor:pointer;
+    color: rgb(100, 100, 163);
+}
+
+.logout{
+    position:absolute;
+    bottom:1rem;
+    right:1rem;
+}
