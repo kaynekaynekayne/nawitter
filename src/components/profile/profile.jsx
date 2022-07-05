@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './profile.module.css';
 
-const Profile = ({authService, userObj}) => {
+const Profile = ({authService, userObj, refreshUser}) => {
 
     const [newDisplayName, setNewDisplayName]=useState(userObj.displayName);
     
@@ -27,6 +27,7 @@ const Profile = ({authService, userObj}) => {
         if(userObj.displayName!==newDisplayName){
             await authService.updateNickname(newDisplayName);
         }        
+        refreshUser();
     }
 
 

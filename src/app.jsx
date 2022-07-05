@@ -15,8 +15,11 @@ function App({authService,firestoreService,storageService}) {
     .onAuthChange((user)=>{
       if(user){
         setIsLoggedIn(true);
-        setUserObj({...user, 
-          displayName: user.displayName===null ? "anonymous" : user.displayName});
+        setUserObj({ 
+          displayName: user.displayName===null ? "anonymous" : user.displayName,
+          uid:user.uid,
+          updateProfile:()=>authService.updateNickname(user.displayName)
+        });
       } else{
         setIsLoggedIn(false);
       }
@@ -24,7 +27,14 @@ function App({authService,firestoreService,storageService}) {
     })
   },[]);
 
-  
+  const refreshUser=()=>{
+    const user=authService.firebaseAuth.currentUser;
+    setUserObj({ 
+      displayName: user.displayName===null ? "anonymous" : user.displayName,
+      uid:user.uid,
+      updateProfile:()=>authService.updateNickname(user.displayName)
+    })
+  }
 
   return (
     <div className={styles.app}>
@@ -57,7 +67,7 @@ function App({authService,firestoreService,storageService}) {
                   storageService={storageService}/>
                   }
                 />
-                <Route path="/profile" element={<Profile authService={authService} userObj={userObj}/>} />
+                <Route path="/profile" element={<Profile authService={authService} userObj={userObj} refreshUser={refreshUser}/>} />
               </>
             )
           :
