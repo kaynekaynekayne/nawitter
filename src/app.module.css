@@ -18,35 +18,3 @@ body{
     align-items: center;
     flex-direction: column;
 }
-
-.container{
-    width:100%;
-    height:3rem;
-    color:rgb(69, 69, 69);
-}
-
-.navi{
-    background-color: #c6cfe2;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height:100%;
-    padding:0;
-    margin:0;
-}
-
-#home{
-    transition: all 100ms ease-in;
-}
-
-#home:hover{
-    color:rgb(235, 238, 167);
-}
-
-#profile{
-    transition: transform 0.8s ease;
-}
-#profile:hover{
-    transform: rotate( 75deg );
-}
-

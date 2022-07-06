@@ -1,9 +1,10 @@
 import React,{useState, useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import styles from './app.module.css';
 import Home from './components/nawitter-home/home';
 import Login from './components/login/login';
-import styles from './app.module.css';
 import Profile from './components/profile/profile';
+import Navigation from './components/navigation/navigation';
 
 function App({authService,firestoreService,storageService}) {
   const [userObj,setUserObj]=useState(null);
@@ -38,48 +39,29 @@ function App({authService,firestoreService,storageService}) {
     <div className={styles.app}>
       {init ? (
         <Router>
-        {Boolean(userObj) && (
-          <nav className={styles.container}>
-            <ul className={styles.navi}>
-              <li>
-                <Link to="/" aria-label="home">
-                  <i id={styles.home} className="fas fa-home"></i>
-                </Link>
-              </li>
-              <li>
-                <Link to="/profile" aria-label="profile">
-                  <i id={styles.profile} className="fas fa-cog">
-                  </i>
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        )}
-        <Routes>
-          {Boolean(userObj) ? 
-            (
-              <>
-                <Route path="/" element={<Home 
-                  userObj={userObj} 
-                  firestoreService={firestoreService} 
-                  storageService={storageService}/>
-                  }
-                />
-                <Route path="/profile" element={<Profile 
-                  authService={authService} 
-                  userObj={userObj} 
-                  refreshUser={refreshUser}
-                  firestoreService={firestoreService}
+          {Boolean(userObj) && <Navigation />}
+          <Routes>
+            {Boolean(userObj) ? 
+              (
+                <>
+                  <Route path="/" element={<Home 
+                    userObj={userObj} 
+                    firestoreService={firestoreService} 
+                    storageService={storageService}/>}
                   />
-                  }
-                />
-              </>
-            )
-          :
-            <Route path="/" element={<Login authService={authService}/>}/>
-          }
-        </Routes>
-      </Router>
+                  <Route path="/profile" element={<Profile 
+                    authService={authService} 
+                    userObj={userObj} 
+                    refreshUser={refreshUser}
+                    firestoreService={firestoreService}/>}
+                  />
+                </>
+              )
+            :
+              <Route path="/" element={<Login authService={authService}/>}/>
+            }
+          </Routes>
+        </Router>
       ) : (
         <h3>Loading...</h3>
       )}
