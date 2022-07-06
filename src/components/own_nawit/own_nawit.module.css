@@ -1,19 +1,33 @@
 
 .lists{
-    padding:0;
+    padding:0.6rem 0.8em;
+    margin:0;
+    border-bottom:1px solid rgb(181, 178, 178);
+    font-size:0.9rem;
 }
 
 .list{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
 .content{
+    max-width: 20rem;
     word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .date{
-    font-size:0.8rem;
-    color:rgb(71, 70, 70);
+    font-size:0.7rem;
+    color:rgb(128, 126, 126);
+}
+
+
+@media screen and (max-width:767px){
+    .list{
+        flex-direction: column;
+    }
 }
