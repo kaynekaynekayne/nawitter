@@ -25,11 +25,16 @@ const Preview = ({firestoreService, userObj}) => {
     }
 
     return(
-        <section className={styles.preview}>
-            {posted.map(post=>
-                <OwnNawit post={post} handleDate={handleDate} key={post.id}/>
-            )}
-        </section>
+        <>
+            <p className={styles.title}
+                >@{userObj.displayName}{userObj.displayName.endsWith('s') ? "'" : "'s"} posts
+            </p>
+            <section className={styles.preview}>
+                {posted.map(post=>
+                    <OwnNawit post={post} handleDate={handleDate} key={post.id}/>
+                )}
+            </section>
+        </>
     )
 };
 

@@ -30,4 +30,8 @@
     .list{
         flex-direction: column;
     }
+
+    .content{
+        max-width: 22rem;
+    }
 }

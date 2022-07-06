@@ -58,19 +58,3 @@ input:focus{
     margin-left:0.3rem;
     color:rgb(58, 57, 57);
 }
-
-@media screen and (max-width:767px){
-    /* .form{
-        width:21rem;
-        margin:0 auto;
-    }
-    
-    .input{
-        width:17rem;
-        height:2.5rem;
-        border:1px solid #c6c6c0;
-        border-radius: 2.5rem;
-        padding-left:1rem;
-        font-size:0.8rem;
-    } */
-}

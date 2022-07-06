@@ -11,19 +11,18 @@
 }
 
 .container{
-    width:25rem;
-    margin:0 auto;
+    margin:2rem auto;
 }
 
 .introduction{
-    font-size:0.9rem;
     font-weight: bolder;
 }
+
 .input{
-    width:9rem;
+    width:20rem;
     border:none;
     border-radius:0.8rem;
-    padding:0.5rem 1rem;
+    padding:0.8rem 1rem;
     font-size:0.8rem;
     text-align: center;
 }
