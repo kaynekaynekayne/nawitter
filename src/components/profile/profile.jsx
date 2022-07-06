@@ -36,7 +36,7 @@ const Profile = ({authService, userObj, refreshUser, firestoreService}) => {
         <section className={styles.profile}>
             <div className={styles.container}>
                 <p className={styles.introduction}>
-                    @{userObj.displayName}{userObj.displayName.endsWith('s') ? "'" : "'s"} profile</p>
+                    @{userObj.displayName}{userObj.displayName.endsWith('s') ? "'" : "'s"} nickname</p>
                 <form className={styles.form} onSubmit={onSubmit}>
                     <input 
                         className={styles.input}

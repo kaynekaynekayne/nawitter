@@ -2,7 +2,7 @@
 .lists{
     padding:0.6rem 0.8em;
     margin:0;
-    border-bottom:1px solid rgb(181, 178, 178);
+    border-bottom:1px solid rgb(197, 195, 195);
     font-size:0.9rem;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .content{
-    max-width: 28rem;
+    max-width: 20rem;
     word-break: break-all;
     white-space: nowrap;
     overflow: hidden; 

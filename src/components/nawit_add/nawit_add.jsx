@@ -64,7 +64,6 @@ const NawitAdd = ({firestoreService,userObj,storageService}) => {
         <>
             <form className={styles.form} onSubmit={onSubmit}>
                 <div className={styles.container}>
-                    {previewImg}
                     <input
                         ref={inputRef}
                         className={styles.input} 
