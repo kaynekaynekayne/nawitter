@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './preview.module.css';
+import OwnNawit from '../own_nawit/own_nawit';
 
 const Preview = ({firestoreService, userObj}) => {
     
@@ -22,19 +23,11 @@ const Preview = ({firestoreService, userObj}) => {
             setPosted(posted)
         })
     }
+
     return(
         <section className={styles.preview}>
             {posted.map(post=>
-            <ul className={styles.lists} key={post.createdAt}>
-                <li className={styles.list}>
-                    <span className={styles.content}>{post.content}</span>
-                    <span className={styles.date}>
-                        {`${post.created.year}.${handleDate(post.created.month)}.${handleDate(post.created.day)}
-                            ${handleDate(post.created.hour)}:${handleDate(post.created.min)}
-                        `}
-                    </span>
-                </li>
-            </ul>
+                <OwnNawit post={post} handleDate={handleDate} key={post.id}/>
             )}
         </section>
     )

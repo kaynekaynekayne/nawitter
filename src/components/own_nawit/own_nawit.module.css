@@ -1,0 +1,19 @@
+
+.lists{
+    padding:0;
+}
+
+.list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.content{
+    word-break: break-all;
+}
+
+.date{
+    font-size:0.8rem;
+    color:rgb(71, 70, 70);
+}
