@@ -22,7 +22,7 @@ class FirestoreService{
         await addDoc(collection(this.firestore,"nawits"),nawitObj)
     }
 
-    getContent(onUpdate){
+    getAllContents(onUpdate){
         const q=query(collection(this.firestore, "nawits"),orderBy("createdAt","desc"));
         onSnapshot(q,(snapshot)=>{
             const getNawits=snapshot.docs.map((doc)=>({...doc.data(), id:doc.id}))
@@ -34,7 +34,7 @@ class FirestoreService{
         const q=query(collection(this.firestore, "nawits"),where("creatorId","==",id),orderBy("createdAt","desc"));
         const posts=await getDocs(q);
         const getPosts=posts.docs.map((post)=>({...post.data(),id:post.id}));
-        getPosts && onUpdate(getPosts)
+        getPosts && onUpdate(getPosts);
     }
 
     async deleteContent(id){

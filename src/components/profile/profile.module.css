@@ -6,6 +6,7 @@
     max-width: 80rem;
     font-family: 'Nunito', sans-serif;
     text-align: center;
+    overflow-y: scroll;
 }
 
 .container{
@@ -44,4 +45,28 @@
     border:none;
     border-radius:0.4rem;
     cursor: pointer;
+}
+
+
+@media screen and (min-width:768px){
+    .profile::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media screen and (max-width:767px){
+
+    .profile::-webkit-scrollbar {
+        width:5px;
+    }
+    
+    .profile::-webkit-scrollbar-thumb {
+        background-color: #777485;
+    }
+    
+    .profile::-webkit-scrollbar-track {
+        background-color: rgb(170, 167, 167);
+        box-shadow: inset 0px 0px 5px white;
+    }
+
 }

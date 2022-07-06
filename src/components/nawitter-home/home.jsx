@@ -8,7 +8,7 @@ const Home = ({userObj, firestoreService, storageService}) => {
     const [nawits,setNawits]=useState([]);
 
     useEffect(()=>{
-        firestoreService.getContent(nawits=>{
+        firestoreService.getAllContents(nawits=>{
             setNawits(nawits);
         });
     },[]);
