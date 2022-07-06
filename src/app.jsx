@@ -6,7 +6,6 @@ import styles from './app.module.css';
 import Profile from './components/profile/profile';
 
 function App({authService,firestoreService,storageService}) {
-  const [isLoggedIn, setIsLoggedIn]=useState(false);
   const [userObj,setUserObj]=useState(null);
   const [init, setInit]=useState(false);
 
@@ -14,14 +13,13 @@ function App({authService,firestoreService,storageService}) {
     authService
     .onAuthChange((user)=>{
       if(user){
-        setIsLoggedIn(true);
         setUserObj({ 
           displayName: user.displayName===null ? "anonymous" : user.displayName,
           uid:user.uid,
           updateProfile:()=>authService.updateNickname(user.displayName)
         });
       } else{
-        setIsLoggedIn(false);
+        setUserObj(null);
       }
       setInit(true);
     })
@@ -40,7 +38,7 @@ function App({authService,firestoreService,storageService}) {
     <div className={styles.app}>
       {init ? (
         <Router>
-        {isLoggedIn && (
+        {Boolean(userObj) && (
           <nav className={styles.container}>
             <ul className={styles.navi}>
               <li>
@@ -58,7 +56,7 @@ function App({authService,firestoreService,storageService}) {
           </nav>
         )}
         <Routes>
-          {isLoggedIn ? 
+          {Boolean(userObj) ? 
             (
               <>
                 <Route path="/" element={<Home 
