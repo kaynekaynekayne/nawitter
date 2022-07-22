@@ -1,8 +1,11 @@
-import React,{useState} from 'react';
+import React,{useState, useContext} from 'react';
 import styles from './nawit.module.css';
+import StorageContext from '../../context/StorageContext';
 
-const Nawit = ({nawit, isOwner, firestoreService, storageService}) => {
+const Nawit = ({nawit, isOwner, firestoreService}) => {
 
+    const {storageService}=useContext(StorageContext);
+    
     const [editing,setEditing]=useState(false);
     const [newContent,setNewContent]=useState(nawit.content);
 

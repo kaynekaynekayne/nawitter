@@ -5,8 +5,9 @@ import Home from './components/nawitter-home/home';
 import Login from './components/login/login';
 import Profile from './components/profile/profile';
 import Navigation from './components/navigation/navigation';
+import { StorageProvider } from './context/StorageContext';
 
-function App({authService,firestoreService,storageService}) {
+function App({authService,firestoreService}) {
   const [userObj,setUserObj]=useState(null);
   const [init, setInit]=useState(false);
 
@@ -37,34 +38,36 @@ function App({authService,firestoreService,storageService}) {
 
   return (
     <div className={styles.app}>
-      {init ? (
-        <Router>
-          {Boolean(userObj) && <Navigation />}
-          <Routes>
-            {Boolean(userObj) ? 
-              (
-                <>
-                  <Route path="/" element={<Home 
-                    userObj={userObj} 
-                    firestoreService={firestoreService} 
-                    storageService={storageService}/>}
-                  />
-                  <Route path="/profile" element={<Profile 
-                    authService={authService} 
-                    userObj={userObj} 
-                    refreshUser={refreshUser}
-                    firestoreService={firestoreService}/>}
-                  />
-                </>
-              )
-            :
-              <Route path="/" element={<Login authService={authService}/>}/>
-            }
-          </Routes>
-        </Router>
-      ) : (
-        <h3>Loading...</h3>
-      )}
+      <StorageProvider>
+        {init ? (
+          <Router>
+            {Boolean(userObj) && <Navigation />}
+            <Routes>
+              {Boolean(userObj) ? 
+                (
+                  <>
+                    <Route path="/" element={<Home 
+                      userObj={userObj} 
+                      firestoreService={firestoreService} 
+                      />}
+                    />
+                    <Route path="/profile" element={<Profile 
+                      authService={authService} 
+                      userObj={userObj} 
+                      refreshUser={refreshUser}
+                      firestoreService={firestoreService}/>}
+                    />
+                  </>
+                )
+              :
+                <Route path="/" element={<Login authService={authService}/>}/>
+              }
+            </Routes>
+          </Router>
+        ) : (
+          <h3>Loading...</h3>
+        )}
+      </StorageProvider>
     </div>
   );
 }

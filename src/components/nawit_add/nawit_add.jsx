@@ -1,8 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import styles from './nawit_add.module.css';
+import StorageContext from '../../context/StorageContext';
 
-const NawitAdd = ({firestoreService,userObj,storageService}) => {
+const NawitAdd = ({firestoreService,userObj}) => {
 
+    const {storageService}=useContext(StorageContext);
+    
     const inputRef=useRef();
     const [attachment,setAttachment]=useState("");
     const [previewImg, setPreviewImg]=useState(null);
